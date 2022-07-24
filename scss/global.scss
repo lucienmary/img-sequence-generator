@@ -1,0 +1,28 @@
+@import 'variable';
+@import 'vendors/normalize';
+@import 'wrapper';
+
+body {
+    padding: 0 12px;
+    background-color: rgb(34, 34, 34);
+}
+
+nav {
+    ul {
+        padding: 0;
+        list-style: none;
+
+        li {
+            display: inline-block;
+            padding-right: 12px;
+        }
+    }
+}
+
+a {
+    color: cadetblue;
+
+    &:hover {
+        color: lightblue;
+    }
+}
