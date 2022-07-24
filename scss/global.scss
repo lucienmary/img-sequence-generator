@@ -2,27 +2,53 @@
 @import 'vendors/normalize';
 @import 'wrapper';
 
-body {
-    padding: 0 12px;
-    background-color: rgb(34, 34, 34);
+* {
+    box-sizing: border-box;
 }
 
-nav {
-    ul {
-        padding: 0;
-        list-style: none;
+body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "header header"
+        "canvas panel"
+    ;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 0 12px;
+    background-color: var(--body-bg);
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
+}
 
-        li {
-            display: inline-block;
-            padding-right: 12px;
-        }
+header {
+    width: 100%;
+    grid-area: header;
+}
+
+h1, h2, h3, h4 {
+    color: var(--title-color);
+}
+
+input, select {
+    color: black;
+}
+
+#section-canvas {
+    grid-area: canvas;
+    
+    .canvas-container {
+        background-color: #000;
     }
 }
 
-a {
-    color: cadetblue;
+#panel {
+    background-color: var(--panel-bg);
+    padding: 12px;
+    grid-area: panel;
 
-    &:hover {
-        color: lightblue;
+    div {
+        width: 100%;
+        padding: 0 0 12px;
     }
 }
