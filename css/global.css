@@ -272,7 +272,7 @@ input, select {
   grid-area: canvas;
 }
 #section-canvas .canvas-container {
-  background-color: #000;
+  border: 1px solid white;
 }
 
 #panel {

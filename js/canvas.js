@@ -1,21 +1,36 @@
 $(function() {
-    let canvasBg = $('#background-color-input').val();
-
     const CANVAS = new fabric.Canvas('canvas');
 
-    CANVAS.fillStyle = 'blue';
-
-    let rect = new fabric.Rect({
-    left: 120,
-    top: 120,
-    fill: canvasBg,
-    width: 300,
-    height: 300
+    $('#main-caracter-input').on('change', (e) => {
+        setMainImage(e);
     });
 
-    CANVAS.add(rect);
-});
+    function setMainImage(e) {
+        const READER = new FileReader();
+        READER.onload = function (e) {
+            const IMG_OBJ = new Image();
+            IMG_OBJ.src = e.target.result;
 
+            IMG_OBJ.onload = function () {
+                var image = new fabric.Image(IMG_OBJ);
+
+                image.set({
+                    left: (CANVAS.width / 2) - ((100 / IMG_OBJ.width) / 2),
+                    top: (CANVAS.height / 2) - ((100 / IMG_OBJ.height) / 2),
+                    scaleX: 100 / IMG_OBJ.width,
+                    scaleY: 100 / IMG_OBJ.height,
+                    angle: 0,
+                    opacity: 1
+                });
+
+                CANVAS.centerObject(image);
+                CANVAS.add(image);
+                CANVAS.renderAll();
+            }
+        }
+        READER.readAsDataURL(e.target.files[0]);
+    }
+});
 // $(function() {
 //     const ASSETS = {};
 //     const OUTPUT_SETTINGS = {};
